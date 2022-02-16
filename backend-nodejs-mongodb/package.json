@@ -1,0 +1,18 @@
+{
+  "name": "diary-nodejs-mongodb",
+  "version": "1.0.0",
+  "description": "Diary application backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Asim Junaid",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1",
+    "nodemon": "^2.0.15",
+    "validator": "^13.7.0"
+  }
+}

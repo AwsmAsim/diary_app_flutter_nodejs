@@ -1,2 +1,2 @@
-https://www.buymeacoffee.com/asimjunaidcodes
+<a href="https://www.buymeacoffee.com/asimjunaidcodes" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 # diary_app_flutter_nodejs

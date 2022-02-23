@@ -1,3 +1,4 @@
+import 'package:diary_app/services/date.dart';
 import 'package:flutter/material.dart';
 
 class DiaryTile extends StatelessWidget {
@@ -5,7 +6,7 @@ class DiaryTile extends StatelessWidget {
   String date, subHeading;
   var onTap, onDeleteButtonPressed;
   DiaryTile({required this.date,required this.subHeading, this.onTap, this.onDeleteButtonPressed});
-
+  Date date1 = Date();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,7 +18,7 @@ class DiaryTile extends StatelessWidget {
               icon: Icon(Icons.delete),
               onPressed: onDeleteButtonPressed,
             ),
-            title: Text(date,
+            title: Text(date1.parseTime(date),
               style: const TextStyle(
                   fontWeight: FontWeight.bold
               ),

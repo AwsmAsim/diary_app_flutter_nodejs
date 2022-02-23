@@ -77,8 +77,8 @@ class LoginPage extends StatelessWidget {
                               AuthenticationController authController = AuthenticationController();
                               var loginStatus = await authController.loginUser(emailController.text, passwordController.text);
                               if(loginStatus){
-                                Provider.of<DiaryController>(context, listen: false).fetchDiaries();
                                 Navigator.of(context).popAndPushNamed(LoadingScreen.ID);
+                                // Provider.of<DiaryController>(context, listen: false).fetchDiaries();
                                 // Navigator.of(context).popAndPushNamed(HomePage.ID);
                               }else{
                                 print('Login Failed, login.dart, loginStatus $loginStatus');

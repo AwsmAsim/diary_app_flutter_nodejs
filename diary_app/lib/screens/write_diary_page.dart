@@ -1,6 +1,7 @@
 import 'package:diary_app/controller/DiaryController.dart';
 import 'package:diary_app/models/models.diary.dart';
 import 'package:diary_app/screens/homepage.dart';
+import 'package:diary_app/services/date.dart';
 import 'package:diary_app/widgets/page_border.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ class WriteDiaryPage extends StatelessWidget {
   String date = '2020-2-4';
   bool update = false;
   Diary? diary;
+  Date dateParser = Date();
   WriteDiaryPage({this.diary});
 
   @override
@@ -61,7 +63,7 @@ class WriteDiaryPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(diary?.date ?? date,
+                Text(diary?.date ?? dateParser.currentParsedTime(),
                   style: const TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold

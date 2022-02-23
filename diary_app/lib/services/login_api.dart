@@ -6,9 +6,10 @@ class LoginApi{
   final String email;
   final String password;
 
-  const LoginApi(this.email, this.password);
+  LoginApi(this.email, this.password);
 
-  final urlLink = 'http://192.168.100.141:3000';
+  final urlLink = Platform.isWindows || Platform.isMacOS || Platform.isLinux ? 'localhost:3000' : '10.0.2.2:3000';
+  // In case of physical device, replace with Wifi ipv4 address
 
   Future<http.Response> loginWithEmailPassword() async {
     final queryParameters = {
@@ -16,9 +17,10 @@ class LoginApi{
       "password" : password
     };
     // final uri = Uri.http('192.168.100.141:3000', '/users/login/', queryParameters);
-    final uri = Uri.http('localhost:3000', '/users/login/');
+    final uri = Uri.http(urlLink, '/users/login/');
     final headers = {HttpHeaders.contentTypeHeader: 'application/json'};
     final response = await http.post(uri, headers: headers, body: jsonEncode(queryParameters));
+    print(response);
     return response;
   }
 }

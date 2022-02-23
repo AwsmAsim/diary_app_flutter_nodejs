@@ -1,3 +1,5 @@
+import 'package:diary_app/services/date.dart';
+
 class Diary{
   final d_id;
   final String date;
@@ -15,6 +17,7 @@ class Diary{
 
 
   factory Diary.fromJSON(Map<String, dynamic> json){
+
     return Diary(
         d_id: json["_id"],
         date: json["date"],

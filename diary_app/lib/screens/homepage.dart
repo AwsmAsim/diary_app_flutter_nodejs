@@ -1,5 +1,7 @@
 import 'package:diary_app/controller/DiaryController.dart';
+import 'package:diary_app/controller/authentication_controller.dart';
 import 'package:diary_app/models/logged_in_user.dart';
+import 'package:diary_app/screens/login.dart';
 import 'package:diary_app/screens/write_diary_page.dart';
 import 'package:diary_app/services/diary_api.dart';
 import 'package:diary_app/widgets/diary_tile.dart';
@@ -16,6 +18,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.login), onPressed: (){
+          Provider.of<DiaryController>(context, listen: false).clearDiaries();
+          Provider.of<AuthenticationController>(context, listen: false).logOutUser();
+          Navigator.of(context).pushNamedAndRemoveUntil(LoginPage.ID, (Route<dynamic> route) => false);
+        },),
         title: const Center(child: Text('Your Diaries',
           style: TextStyle(
               fontWeight: FontWeight.bold
@@ -58,7 +65,9 @@ class HomePage extends StatelessWidget {
                 child: Container(
                       child: Consumer<DiaryController>(
                         builder: (context, diary, _){
+
                           if(diary.diaryList.isNotEmpty){
+                            // print(diary.diaryList.length);
                             return ListView.builder(
                                   itemCount: diary.diaryList.length,
                                   itemBuilder: (BuildContext context, int index){
@@ -82,7 +91,7 @@ class HomePage extends StatelessWidget {
                           }else{
                             return Container(
                                     height: MediaQuery.of(context).size.height - 200,
-                                    child: Center(child: Text('Loading...'),),
+                                    child: Center(child: Text('No diaries...'),),
                                   );
                           }
                         },

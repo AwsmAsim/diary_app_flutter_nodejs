@@ -6,6 +6,7 @@ import 'package:diary_app/services/login_api.dart';
 import 'package:diary_app/services/register_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 
 class AuthenticationController extends ChangeNotifier{
 
@@ -34,6 +35,14 @@ class AuthenticationController extends ChangeNotifier{
       return true;
     }
     return false;
+  }
+
+  bool logOutUser(){
+    checkLogin();
+    LoggedInUser.uid = null;
+    LoggedInUser.email = null;
+    LoggedInUser.name = null;
+    return true;
   }
 
   Future<bool> registerUser(String name, String email, String password) async{

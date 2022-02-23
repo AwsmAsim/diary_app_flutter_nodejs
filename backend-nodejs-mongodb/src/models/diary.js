@@ -4,8 +4,7 @@ const mongoose = require('mongoose')
 
 const diarySchema = mongoose.Schema({
     date: {
-        type: Date,
-        default: Date.now()
+        type: String,
     },
     content: {
         type: String,
@@ -18,7 +17,9 @@ const diarySchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
-})
+},
+{timestamps: true}
+)
 
 const Diary = mongoose.model('Diary', diarySchema);
 

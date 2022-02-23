@@ -21,6 +21,7 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=>DiaryController()),
+        ChangeNotifierProvider(create: (context)=>AuthenticationController())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

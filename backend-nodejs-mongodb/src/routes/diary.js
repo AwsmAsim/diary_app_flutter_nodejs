@@ -11,7 +11,7 @@ router.get('/diary/:user', async (request, response)=>{
     }
     try{
         // request.body = {user : ObjectId}
-        const diaries = await Diary.find(filter);
+        const diaries = await Diary.find(filter).sort({createdAt:-1});
         if(diaries.length == 0){
             return response.status(404).send({error: 'Invalid Request'})
         }
@@ -59,6 +59,7 @@ router.patch('/diary/:id', async(request, response)=>{
         providedKeys.forEach((key)=>{
             diary[key] = request.body[key];
         })
+        await diary.save()
         response.status(200).send(diary);
     }catch(error){
         response.status(500).send({error})

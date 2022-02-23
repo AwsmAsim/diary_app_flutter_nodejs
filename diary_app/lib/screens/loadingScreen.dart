@@ -18,7 +18,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   AuthenticationController auth = AuthenticationController();
   @override
   Widget build(BuildContext context) {
-
+    // Provider.of<DiaryController>(context).fetchDiaries();
     return Consumer<DiaryController>(
       builder: (context, diary, _){
         // diary.fetchDiaries();

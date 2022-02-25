@@ -52,10 +52,10 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // );
   }
 
-  // @override
-  // void initState() {
-  //   DiaryController diaryController = DiaryController();
-  //   Provider.of<DiaryController>(context).fetchDiaries();
-  //
-  // }
+  @override
+  void initState() {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      Provider.of<DiaryController>(context, listen: false).fetchDiaries();
+    });
+  }
 }
